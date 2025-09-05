@@ -29,10 +29,10 @@ sleep(3)
 # Verify “Sign in or create account” text is shown
 actual_text = driver.find_element(By.XPATH, "//h1[normalize-space()='Sign in or create account']").text
 expected_text = 'Sign in or create account'
-assert expected_text in actual_text
-print("Success!")
+assert expected_text == actual_text, f"Expected {expected_text} but got {actual_text}"
 
-# Extra seps needed to get to sign in button
+
+# Extra steps needed to get to sign in button
 driver.find_element(By.ID, 'username').send_keys('washingtonosha209@yahoo.com')
 driver.find_element(By.ID, 'username').send_keys(Keys.ENTER)
 sleep(4)
