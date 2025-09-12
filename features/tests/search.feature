@@ -2,17 +2,17 @@ Feature: Tests for Target search functionality
 
   Scenario: User can search for a tea on Target
     Given Open target home page
-    When Search for tea
+    When I search for tea
     Then Verify search results are shown for tea
 
   Scenario: User can search for tea on target
    Given Open target home page
-    When Search for iphone
+    When I search for iphone
     Then Verify search results are shown for iphone
 
   Scenario: User can search for tea on target
    Given Open target home page
-    When Search for mug
+    When I search for mug
     Then Verify search results are shown for mug
 
 #  Scenario Outline: User can search for a product
