@@ -1,37 +1,34 @@
-from selenium.webdriver.common.by import By
 from behave import given, when, then
-from time import sleep
 
-# Variables
-CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
-HEADER_LINKS = (By.CSS_SELECTOR, '[data-test*="@web/GlobalHeader/UtilityHeader/"]')
-TARGET_CIR = (By.ID, 'utilityNav-circle')
-BENEFIT_CELLS = (By.CSS_SELECTOR, "[class='cell-item-content']")
+
+# from target home page search for a product
+@when('I search for {product_name}')
+def search_product(context, product_name):
+    context.app.header.search_product(product_name)
 
 
 @when('Click on Cart icon')
 def click_cart(context):
-    context.driver.find_element(*CART_ICON).click()
+    context.app.header.click_cart()
+
+@when('Click the account button sign in button opens')
+def click_account_button(context):
+    context.app.header.click_account_btn()
 
 
 @when('Click on "Target Circle" button')
 def click_tar_cir_btn(context):
-    context.driver.find_element(*TARGET_CIR).click()
+    context.app.header.target_circle()
 
 
 @then('Verify header has {expected_amount} links')
 def verify_header_link_count(context, expected_amount):
-    expected_amount = int(expected_amount)
-    links = context.driver.find_elements(*HEADER_LINKS)
-    print(f'Links {links}')
-    assert len(links) == expected_amount, f'Expected {expected_amount} links but got {len(links)}'
+    context.app.header.verify_header_link_count()
 
 
 @then('Verify page has at least {expected_amount} benefits cells')
 def verify_benefits_cells(context, expected_amount):
-        expected_amount = int(expected_amount)
-        cells = context.driver.find_elements(*BENEFIT_CELLS)
-        print(f'Found {len(cells)} benefit cells on the page')
-        assert len(cells) >= expected_amount, f'Expected at least {expected_amount} cells but got {len(cells)}'
+        context.app.header.circle_benefits(expected_amount)
+
 
 
