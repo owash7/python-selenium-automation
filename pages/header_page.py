@@ -3,24 +3,23 @@ from selenium.webdriver.common.by import By
 
 
 class Header(Page):
-    SEARCH_FIELD = (By.ID, 'search')
+    SEARCH_FIELD = (By.ID, "search")
     SEARCH_BTN = (By.XPATH, "//button[@data-test='@web/Search/SearchButton'"
                             " or @data-test='@web/SearchButton']")
-    CART_ICON = (By.CSS_SELECTOR, '[data-test="@web/CartLink"]')
-    TARGET_CIR = (By.ID, 'utilityNav-circle')
-    HEADER_LINKS = (By.CSS_SELECTOR, '[data-test*="@web/GlobalHeader/UtilityHeader/"]')
+    CART_ICON = (By.CSS_SELECTOR, "[data-test='@web/CartLink']")
+    TARGET_CIR = (By.ID, "utilityNav-circle")
+    HEADER_LINKS = (By.CSS_SELECTOR, "[data-test*='@web/GlobalHeader/UtilityHeader/']")
     BENEFIT_CELLS = (By.CSS_SELECTOR, "[class='cell-item-content']")
-    ACCT_BTN = (By.ID, 'account-sign-in')
-    SIGN_IN_BTN = (By.CSS_SELECTOR, "[data-test='accountNav-signIn']")
+    ACCT_BTN = (By.ID, "account-sign-in")
+
 
     def search_product(self,product_name):
         self.input_text(product_name,*self.SEARCH_FIELD)
-        self.wait_for_element_clickable(*self.SEARCH_BTN)
-        self.click(*self.SEARCH_BTN)
+        self.wait_for_element_clickable_click(*self.SEARCH_BTN)
+
 
     def click_account_btn(self):
         self.click(*self.ACCT_BTN)
-        self.wait_for_element_clickable(*self.SIGN_IN_BTN)
 
 
     def click_cart(self):
@@ -32,9 +31,7 @@ class Header(Page):
 
 
     def verify_header_link_count(self, expected_amount):
-        expected_amount = int(expected_amount)
-        links = self.find_elements(*self.HEADER_LINKS)
-        assert len(links) == expected_amount, f'Expected {expected_amount} links but got {len(links)}'
+            self.verify_element_count(expected_amount, *self.HEADER_LINKS)
 
 
     def circle_benefits(self, expected_amount):

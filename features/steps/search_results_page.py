@@ -3,33 +3,37 @@ from behave import given, when, then
 
 
 LISTINGS = (By.CSS_SELECTOR, "[data-test='@web/site-top-of-funnel/ProductCardWrapper']")
-PRODUCT_IMG = (By.CSS_SELECTOR, 'img')
+PRODUCT_IMG = (By.CSS_SELECTOR, "img")
 PRODUCT_TITLE = (By.CSS_SELECTOR, "[data-test='product-title']")
 
 
 # add product to cart
-@when('Click on Add to Cart button')
-def click_add_cart(context):
-    context.app.search_results_page.click_add_to_cart()
+@when("Click on product")
+def click_product(context):
+    context.app.search_results_page.click_product()
 
 
-@when('Store product name')
-def store_product_name(context):
-    context.app.search_results_page.store_product_name()
+# @when('Store product name')
+# def store_product_name(context):
+#     context.app.search_results_page.click_product()
 
+
+@when("Click add to cart button")
+def add_to_cart_btn(context):
+    context.app.search_results_page.add_to_cart_btn()
 
 # wait for side nav to show and add to cart
-@when('Click Add to Cart button from side navigation')
+@when("Click Add to Cart button from side navigation")
 def side_nav_click_add_to_cart(context):
     context.app.search_results_page.add_button_side_nav()
 
 
-@then('Verify search results are shown for {product}')
+@then("Verify search results are shown for {product}")
 def verify_search_results(context, product):
     context.app.search_results_page.verify_search_results(product)
 
 
-@then('Verify that every product has a name and image')
+@then("Verify that every product has a name and image")
 def verify_product_name_and_image(context):
     # context.driver.execute_script("window.scrollBy(0,2000", "")
     # context.driver.execute_script("window.scrollBy(0,1000", "")

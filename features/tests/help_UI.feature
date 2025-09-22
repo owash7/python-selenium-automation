@@ -4,6 +4,6 @@ Feature: Elements on the Target Help page can be located
     Given Open target home page
     When Click the account button sign in button opens
     Then Click the help center button
-    And Verify Help icon is present
-    And Check if you can search for login
+    And Verify Help page url
+    And Verify 9 help tiles are on page
 

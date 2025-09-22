@@ -4,7 +4,8 @@ from pages.header_page import Header
 from pages.main_page import MainPage
 from pages.search_results_page import SearchResultsPage
 from pages.sign_in_page import SignInPage
-
+from pages.product_details_page import ProductDetailsPage
+from pages.help_ui_page import HelpUIPage
 
 class Application:
 
@@ -17,5 +18,5 @@ class Application:
         self.search_results_page = SearchResultsPage(driver)
         self.cart_page = Cart(driver)
         self.sign_in_page = SignInPage(driver)
-
-
+        self.product_details_page = ProductDetailsPage(driver)
+        self.help_ui_page = HelpUIPage(driver)

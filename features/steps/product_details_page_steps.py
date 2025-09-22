@@ -1,20 +1,16 @@
 from selenium.webdriver.common.by import By
 from behave import given, then
 from time import sleep
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+
 
 COLOR_OPTIONS = (By.CSS_SELECTOR, "li[class*='CarouselItem'] img")
 SELECTED_COLOR = (By.CSS_SELECTOR, "[data-test='@web/VariationComponent'] div")
-VARIANT = (By.CSS_SELECTOR, '[data-test="@web/VariationComponent"]')
 
-@given('Open target product A-91269718 page')
+@given("Open target product A-91269718 page")
 def open_target(context):
-    context.driver.get(f'https://www.target.com/p/wranglers-men-39-s-relaxed-fit-straight-jeans/-/A-91269718?preselect=90919011#lnk=sametab')
-    context.wait.until(EC.presence_of_element_located(VARIANT), message='No options available')
+  context.app.product_details_page.open_target_details()
 
-
-@then('Verify user can click through colors')
+@then("Verify user can click through colors")
 def click_and_verify_colors(context):
     expected_colors = ['Navy Denim', 'Dark Wash', 'Light Wash']
     actual_colors = []
