@@ -6,6 +6,8 @@ from pages.search_results_page import SearchResultsPage
 from pages.sign_in_page import SignInPage
 from pages.product_details_page import ProductDetailsPage
 from pages.help_ui_page import HelpUIPage
+from pages.login_page import LoginPage
+from pages.privacy_policy_page import PrivacyPolicyPage
 
 class Application:
 
@@ -20,3 +22,5 @@ class Application:
         self.sign_in_page = SignInPage(driver)
         self.product_details_page = ProductDetailsPage(driver)
         self.help_ui_page = HelpUIPage(driver)
+        self.login_page = LoginPage(driver)
+        self.privacy_policy_page = PrivacyPolicyPage(driver)

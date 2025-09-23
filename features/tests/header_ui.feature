@@ -7,5 +7,5 @@ Feature: Tests to verify Header UI elements
     #Target circle
   Scenario: Verify there are benefit cells
     Given Open target home page
-    When Click on "Target Circle" button
+    When Click on 'Target Circle' button
     Then Verify page has at least 10 benefits cells
