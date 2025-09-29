@@ -1,5 +1,6 @@
 from time import sleep
 from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
 
@@ -12,6 +13,8 @@ class SearchResultsPage(Page):
     SIDE_NAV_PRODUCT_NAME = (By.CSS_SELECTOR, "[data-test='content-wrapper'] h4")
     PRODUCT_TOKEN = (By.CSS_SELECTOR, "a[data-test='product-title']")
     POP_UP_BANNER = (By.CSS_SELECTOR, "[class='heroImg']")
+    FAV_ICON = (By.CSS_SELECTOR, "[data-test='FavoritesButton']")
+    FAV_TT_TEXT = (By.XPATH, "//*[contains(text(), 'Click to sign in and save')]")
 
     def verify_search_results(self, product):
         self.wait_for_element_visible(*self.SEARCH_RESULTS_TXT)
@@ -41,3 +44,11 @@ class SearchResultsPage(Page):
 
     def verify_product_url(self, product):
         self.verify_partial_url(f'searchTerm={product}')
+
+
+    def hover_fav_icon(self):
+        self.hover_over_element(*self.FAV_ICON)
+
+    def verify_fav_tt_shown(self):
+        self.wait_for_element_visible(*self.FAV_TT_TEXT)
+

@@ -9,6 +9,7 @@ class SignInPage(Page):
     PW_BTN = (By.ID, "password")
     SIGN_IN_W_PW = (By.XPATH, "//button[text()='Sign in with password']")
     ACCT_SIGN_IN = (By.ID, "account-sign-in")
+    PW_ERROR_MSG = (By.XPATH, "//div[contains(text(),'That password is incorrect')]")
 
     def click_sign_in_btn(self):
         self.wait_for_element_clickable_click(*self.SIGN_IN_BTN)
@@ -37,6 +38,11 @@ class SignInPage(Page):
     def verify_user_is_signed_in(self,user):
         self.wait_for_element_visible(*self.ACCT_SIGN_IN)
         self.verify_partial_text(user, *self.ACCT_SIGN_IN)
+
+
+    def verify_password_error_message(self):
+        self.wait_for_element_visible(*self.PW_ERROR_MSG)
+        self.verify_partial_text(*self.PW_ERROR_MSG)
 
 
 

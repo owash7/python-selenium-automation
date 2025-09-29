@@ -26,3 +26,7 @@ def enter_password(context,password):
 @then("Verify {user} is signed in")
 def verify_user_is_signed_in(context,user):
     context.app.sign_in_page.verify_user_is_signed_in(user)
+
+@then("Verify password error message is shown")
+def verify_password_error_message(context):
+    context.app.sign_in_page.verify_password_error_message()

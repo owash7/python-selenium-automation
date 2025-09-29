@@ -1,5 +1,6 @@
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 class Page:
 
@@ -22,6 +23,13 @@ class Page:
 
     def input_text(self, text, *locator):
         self.driver.find_element(*locator).send_keys(text)
+
+# Action Chains
+    def hover_over_element(self, *locator):
+        element = self.find_element(*locator)
+        actions = ActionChains(self.driver)
+        actions.move_to_element(element)
+        actions.perform()
 
 
 # Wait commands

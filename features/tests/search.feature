@@ -29,3 +29,9 @@ Feature: Tests for Target search functionality
       Given Open target home page
       When I search for toothpaste
       Then Verify that every product has a name and image
+
+    Scenario: User can see favorites tooltip for search results
+      Given Open target home page
+      When I search for jeans
+      And Hover favorites icon
+      Then Favorites tooltip is shown

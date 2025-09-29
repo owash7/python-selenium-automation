@@ -28,6 +28,16 @@ def side_nav_click_add_to_cart(context):
     context.app.search_results_page.add_button_side_nav()
 
 
+@when("Hover favorites icon")
+def hover_fav_icon(context):
+    context.app.search_results_page.hover_fav_icon()
+
+
+@then("Favorites tooltip is shown")
+def verify_fav_tt_shown(context):
+    context.app.search_results_page.verify_fav_tt_shown()
+
+
 @then("Verify search results are shown for {product}")
 def verify_search_results(context, product):
     context.app.search_results_page.verify_search_results(product)
@@ -45,3 +55,4 @@ def verify_product_name_and_image(context):
         assert title, 'Error. Product title was not found.'
         img = product.find_element(*PRODUCT_IMG)
         assert img, 'Error. Product image was not found.'
+

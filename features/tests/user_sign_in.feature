@@ -12,7 +12,17 @@ Feature: Test login page
     Given Open target home page
     When Click the account button sign in button opens
     Then Click sign in button
-    And Enter user ******
+    And Enter user morvitalgr@edgetopgrid.com
     And Click sign in by password button
-    And Enter password *****
+    And Enter password Testers1
     Then Verify ***** is signed in
+
+
+  Scenario: Verify user gets error for incorrect password
+    Given Open target home page
+    When Click the account button sign in button opens
+    Then Click sign in button
+    And Enter user morvitalgr@edgetopgrid.com
+    And Click sign in by password button
+    And Enter password Testers2
+    Then Verify password error message is shown
