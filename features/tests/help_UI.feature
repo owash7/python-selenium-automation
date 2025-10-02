@@ -6,7 +6,7 @@ Feature: Elements on the Target Help page can be located
     Then Click the help center button
     And Verify Help page url
     And Verify 9 help tiles are on page
-
+@smoke
   Scenario: User can select Help Topic Promotions and coupons
     Given Open help page for Returns
     Then Verify help Returns page opened
